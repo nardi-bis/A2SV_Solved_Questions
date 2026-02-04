@@ -1,0 +1,27 @@
+#User function Template for python3
+
+class Solution:
+    def isSubset(self, a, b):
+        a.sort()
+        b.sort()
+        j=0
+        i=0
+        while i<len(a) and j<len(b):
+            if a[i]==b[j]:
+                i+=1
+                j+=1
+            elif b[j]>a[i]:
+                i+=1
+            else:
+                return False
+        return j==len(b)
+            
+                
+            
+            
+                
+                
+    
+    
+    
+    
