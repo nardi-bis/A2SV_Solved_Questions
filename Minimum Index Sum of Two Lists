@@ -1,0 +1,13 @@
+class Solution:
+    def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
+        commonstr = {}
+        result = []
+        for i in range(len(list1)):
+            for j in range(len(list2)):
+                if list1[i] == list2[j]:
+                    commonstr[list1[i]] = i+j
+        minimum =  min(commonstr.values())
+        for key, value in commonstr.items():
+            if value == minimum:
+                result.append(key)
+        return result
