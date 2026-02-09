@@ -1,0 +1,8 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        r=[]
+        c=Counter(nums)
+        s=sorted(c.items(),key=lambda x:x[1],reverse=True) 
+        for i in range(k):
+            r.append(s[i][0])# i= goes according to K and 0= is the first element from the tuple
+        return r
