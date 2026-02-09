@@ -1,0 +1,15 @@
+class Solution:
+    def restoreString(self, s: str, indices: List[int]) -> str:
+        l=list(s)
+        r=[]
+
+        ziped=zip(l,indices)
+        sorted_zip=sorted(ziped,key=lambda x:x[1])
+
+        # r = [char for char, index in sorted_zip] list comprehension
+        for char,value in sorted_zip:
+            r.append(char)
+           
+        return "".join(r)
+
+        
