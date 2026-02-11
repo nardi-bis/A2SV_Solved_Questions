@@ -1,0 +1,10 @@
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        c=Counter(s)
+        decreasing_order=c.most_common()
+        res=[]
+        for k,v in decreasing_order:
+            res.append(k*v)
+        return "".join(res)
+            
+        
