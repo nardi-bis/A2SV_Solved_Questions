@@ -1,0 +1,9 @@
+class Solution:
+    def findValidPair(self, s: str) -> str:
+        count = Counter(s)
+        for i in range(len(s)-1):
+            x = int(s[i])
+            y = int(s[i+1])
+            if x != y and count[s[i]] == x and count[s[i+1]] == y:
+                return s[i] + s[i+1]
+        return ""
