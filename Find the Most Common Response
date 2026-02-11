@@ -1,0 +1,17 @@
+class Solution:
+    def findCommonResponse(self, responses: List[List[str]]) -> str:
+        count={}
+
+        for day in responses:
+            removed_duplicate = set(day)          # remove duplicates in same day
+            for word in removed_duplicate:
+                count[word] = count.get(word, 0) + 1
+
+        max_freq = max(count.values())
+        ans = ""
+
+        for word, freq in count.items():
+            if freq == max_freq:
+                if ans == "" or word < ans:
+                    ans = word
+        return ans
