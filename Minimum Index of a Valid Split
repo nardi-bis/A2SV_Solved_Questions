@@ -1,0 +1,14 @@
+class Solution:
+    def minimumIndex(self, nums: List[int]) -> int:
+        numc=sorted(Counter(nums).items(),key=lambda x:x[1],reverse=True)
+        domnums,domfre=numc[0]
+        count=0
+        for i in range(len(nums)):
+            if nums[i]==domnums:
+                count+=1
+            if (i+1)//2<count:
+                right=domfre-count
+                if right>(len(nums)-1-i)//2:
+                    return i
+                else:
+                    return -1
