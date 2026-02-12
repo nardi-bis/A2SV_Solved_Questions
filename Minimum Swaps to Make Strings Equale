@@ -1,0 +1,26 @@
+class Solution:
+    def minimumSwap(self, s1: str, s2: str) -> int:
+        xy = 0
+        yx = 0
+
+        for a, b in zip(s1, s2):
+            if a == 'x' and b == 'y':
+                xy += 1
+            elif a == 'y' and b == 'x':
+                yx += 1
+
+       #odd → impossible
+        if (xy + yx) % 2 != 0:
+            return -1
+
+        # Pair same mismatches
+        res = xy // 2 + yx // 2
+
+        # Handle remaining single mismatches
+        xy_remain = xy % 2
+        yx_remain = yx % 2
+
+        if xy_remain == 1 and yx_remain == 1:
+            res += 2  # need 2 res for the remaining one xy + one yx
+
+        return res
