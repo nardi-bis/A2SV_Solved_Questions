@@ -1,0 +1,17 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        row=len(matrix)
+        col=len(matrix[0])
+        
+        res=[]
+        for j in range(col):
+            r=[]
+            for i in range(row-1,-1,-1):
+                r.append(matrix[i][j])
+            res.append(r)
+        for i in range(row):
+            matrix[i][:]=res[i]
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        
