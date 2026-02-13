@@ -1,0 +1,30 @@
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        word=s.split()
+        if len(word)!=len(pattern):
+            return False
+        if len(set(word))!=len(set(pattern)):
+            return False
+    
+        d={}
+        for a,b in zip(pattern,word):
+            if a in d:
+                if d[a]!=b:
+                    return False
+            else:
+                d[a]=b
+        return True
+
+
+        
+
+
+
+
+
+
+
+
+
+
+        
