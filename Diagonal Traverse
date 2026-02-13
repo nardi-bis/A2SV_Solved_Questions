@@ -1,0 +1,19 @@
+class Solution:
+    def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
+        r = []
+        row = len(mat)
+        col = len(mat[0])
+        x = row + col - 2
+        diagonal = defaultdict(list)
+        
+        for i in range(row):
+            for j in range(col):
+                diagonal [ i + j ] . append( mat [i] [j] )
+                
+        for num in range(x+1):
+            if num % 2 == 0:
+                r.extend(reversed(diagonal[num]))
+            else:
+                r.extend(diagonal[num]) 
+
+        return r
