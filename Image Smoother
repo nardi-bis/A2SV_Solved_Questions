@@ -1,0 +1,22 @@
+class Solution:
+    def imageSmoother(self, img: List[List[int]]) -> List[List[int]]:
+        row=len(img)
+        col=len(img[0])
+        res=[[0]*col for _ in range(row)]
+        direction= [(-1,-1), (-1,0), (-1,1),
+                   (0,-1),  (0,0),  (0,1),
+                   (1,-1),  (1,0),  (1,1)]
+
+        for i in range(row):
+            for j in range(col):
+                total=0 # to add
+                count=0 # to divide with
+                for dx,dy in direction:
+                    ni=i+dx
+                    nj=j+dy
+                    if 0<=ni<row and 0<=nj<col:
+                        total+=img[ni][nj]
+                        count+=1
+                res[i][j]=total//count
+        return res
+
