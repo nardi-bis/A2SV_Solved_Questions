@@ -1,0 +1,8 @@
+n=int(input())
+x=list(map(int,input().split()))
+x.sort()
+k=n//2
+if n%2==0:
+    print(x[k-1])
+else:
+    print(x[k])
