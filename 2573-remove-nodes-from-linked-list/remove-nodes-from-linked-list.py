@@ -8,16 +8,37 @@ class Solution:
         cur = head
         stack = []
         while cur:
-            while stack and cur.val > stack[-1]:
+            while stack and cur.val > stack[-1] :
                 stack.pop()
             stack.append(cur.val)
             cur = cur.next
+    # building a linked list from a stack(list)
 
-        new = ListNode(0)
-        current = new
-    
+        new = ListNode(0) #dummy node
+        current = new # now cuurent points to the dummy node '
         for x in stack:
             current.next = ListNode(x)
             current = current.next
         
         return new.next
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
