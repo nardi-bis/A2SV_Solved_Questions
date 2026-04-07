@@ -6,23 +6,24 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        ans_inorder = []
-        def ino(n):
-            if n == None:
-                return 
-            ino(n.left)
-            ans_inorder.append(n.val)
-            ino(n.right)
-        ino(root)
+        def bst(node):
+            mels = [True, node.val, node.val]
+            if node.left:
+                lt, lmn, lmx = bst(node.left)
+                mels[0] = mels[0] and lt
+                mels[1] = min(mels[1], lmn)
+                mels[2] = max(mels[2], lmx)
+                mels[0] = mels[0] and (node.val > lmx)
+            if node.right:
+                rt, rmn, rmx = bst(node.right)
+                mels[0] = mels[0] and rt
+                mels[1] = min(mels[1], rmn)
+                mels[2] = max(mels[2], rmx)
+                mels[0] = mels[0] and (node.val < rmn)
+            return mels
+        return bst(root)[0]
 
-        x = set(ans_inorder)
-        if len(x) != len(ans_inorder):
-            return False
             
-        return ans_inorder == sorted(ans_inorder)
-   
-        
-       
 
 
         
