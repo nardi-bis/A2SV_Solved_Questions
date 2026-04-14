@@ -13,7 +13,7 @@ class Solution:
             
             l = dfs(node.left)
             r = dfs(node.right)
-
+ # if there is a negative value in the node it is better to leave it (take '0')
             l = max(l, 0)
             r = max(r, 0)
             
