@@ -25,7 +25,6 @@ class Solution:
             for r_change, c_change in directions:
                 new_r = r + r_change
                 new_c = c + c_change
-                
                 dfs(new_r, new_c)
 
                 
