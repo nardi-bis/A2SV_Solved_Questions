@@ -14,7 +14,7 @@ class Solution:
             cs = ps + root.val
             x = cs - targetSum
             if x in freq:
-                self.count += freq[x]
+                self.count += freq[x] # how many starting points
             if cs in freq:
                 freq[cs] += 1
             else:
@@ -23,7 +23,7 @@ class Solution:
             dfs(root.right, cs)
             freq[cs] -= 1
         self.count = 0
-        freq = {0:1} # frequency for the path that checks 
+        freq = {0:1} # frequency for the path that checks ,Handles the case where the path from the root itself equals the targetSum
         dfs(root, 0) # root, previous one
         return self.count
 
