@@ -1,13 +1,14 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        # BFS
         graph = defaultdict(list)
         indegree = [0] * numCourses
+        queue = [] # to traverse
+        res = []
         for i, j in prerequisites:
             graph[j].append(i)
             indegree[i] += 1
-        queue = [] # to traverse
-        res = []
-        for i in range(len(indegree)):
+        for i in range(numCourses):
             if indegree[i] == 0:
                 queue.append(i)
         while queue:
@@ -22,7 +23,8 @@ class Solution:
 
         if len(res) != numCourses:
             return []
-        return res
+        else:
+            return res
 
                 
 
