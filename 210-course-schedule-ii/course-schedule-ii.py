@@ -4,10 +4,10 @@ class Solution:
         gray = 2
         black = 3
         color = {k: white for k in range(numCourses)} # we use dictionary and make all the value white
-        res = [[] for i in range(numCourses)]
+        adj_list = [[] for i in range(numCourses)]
 
         for course, pre in prerequisites:
-            res[pre].append(course)
+            adj_list[pre].append(course)
 
         no_cycle = True
         stack = []
@@ -18,7 +18,7 @@ class Solution:
             if not no_cycle:
                 return 
             color[node] = gray
-            for n in res[node]:
+            for n in adj_list[node]:
                 if color[n] == white:
                     dfs(n)
                 elif color[n] == gray:
@@ -26,7 +26,7 @@ class Solution:
                     return
             color[node] = black
             stack.append(node)
-            return True
+        
 
         for c in range(numCourses):
             if color[c] == white:
