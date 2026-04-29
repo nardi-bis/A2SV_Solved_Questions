@@ -1,41 +1,44 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        # BFS
-        graph = defaultdict(list)
-        indegree = [0] * numCourses
-        queue = [] # to traverse
-        res = []
-        for i, j in prerequisites:
-            graph[j].append(i)
-            indegree[i] += 1
-        for i in range(numCourses):
-            if indegree[i] == 0:
-                queue.append(i)
-        while queue:
-            x = queue.pop(0)
-            res.append(x)
+        white = 1
+        gray = 2
+        black = 3
+        color = {k: white for k in range(numCourses)} # we use dictionary and make all the value white
+        res = [[] for i in range(numCourses)]
 
-            # for v in graph.values():
-            for v in graph[x]:
-                indegree[v] -= 1
-                if indegree[v] == 0:
-                    queue.append(v)
+        for course, pre in prerequisites:
+            res[pre].append(course)
 
-        if len(res) != numCourses:
+        no_cycle = True
+        stack = []
+
+        def dfs(node):
+            nonlocal no_cycle
+
+            if not no_cycle:
+                return 
+            color[node] = gray
+            for n in res[node]:
+                if color[n] == white:
+                    dfs(n)
+                elif color[n] == gray:
+                    no_cycle = False
+                    return
+            color[node] = black
+            stack.append(node)
+            return True
+
+        for c in range(numCourses):
+            if color[c] == white:
+                dfs(c)
+
+        if not no_cycle:
             return []
-        else:
-            return res
-
-                
+        return stack[::-1]
 
 
 
 
-
-     
-        
+          
             
-
-
-
-
+        
