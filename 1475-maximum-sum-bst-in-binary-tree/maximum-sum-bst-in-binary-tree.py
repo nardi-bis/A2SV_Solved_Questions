@@ -7,7 +7,6 @@
 class Solution:
     def maxSumBST(self, root: Optional[TreeNode]) -> int:
         self.max_sum = 0
-
         def check(node):
             if not node:
                 return True,float('inf'),float('-inf'),0
@@ -18,7 +17,6 @@ class Solution:
             if l and r and l_max < node.val < r_min:
                 cur_sum = node.val + l_sum + r_sum
                 self.max_sum = max(self.max_sum,cur_sum)
-
                 return True, min(l_min, r_min, node.val), max(l_max, r_max, node.val), cur_sum
 
             return False,0,0,0 
