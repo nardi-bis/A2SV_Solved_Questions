@@ -1,16 +1,15 @@
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
-        heap = []
-        res = []
-        row = len(matrix)
-        col = len(matrix[0])
-        kth = (row * col) - k
-        for r in range(row):
-            for c in range(col):
-                heapq.heappush(heap, -matrix[r][c])
-        for _ in range(kth + 1):
-            res.append(heapq.heappop(heap))
-        v = res[-1]
-        return -v
+        n = len(matrix)
+        # Only push the first element of each row
+        heap = [(matrix[r][0], r, 0) for r in range(n)]
+        heapq.heapify(heap)
+        
+        for _ in range(k - 1):
+            val, r, c = heapq.heappop(heap)
+            if c + 1 < n:
+                heapq.heappush(heap, (matrix[r][c + 1], r, c + 1))
+        
+        return heapq.heappop(heap)[0]
 
         
