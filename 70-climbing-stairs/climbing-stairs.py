@@ -1,6 +1,7 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
         memo = {}
+        #return dp(n) can not be here
         def dp(n):
             if n < 3:
                 return n
