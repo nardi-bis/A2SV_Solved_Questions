@@ -3,7 +3,7 @@ class Solution:
         memo = {}
         #return dp(n) can not be here
         def dp(n):
-            if n < 3:
+            if n <= 3:
                 return n
             if n not in memo:
                 memo[n] = dp(n - 1) + dp(n - 2)
