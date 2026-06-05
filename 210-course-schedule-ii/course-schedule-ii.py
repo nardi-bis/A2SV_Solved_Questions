@@ -26,7 +26,6 @@ class Solution:
                     return
             color[node] = black
             stack.append(node)
-        
 
         for c in range(numCourses):
             if color[c] == white:
