@@ -33,16 +33,18 @@ class Solution:
                         rotted_this_round = True
             if rotted_this_round:
                 minute += 1
-        return minute if fresh == 0 else -1
+        for r in range(row):
+            for c in range(col):
+                if grid[r][c] == 1:
+                    return -1
+        return minute
+        #     if rotted_this_round:
+        #         minute += 1
+        # return minute if fresh == 0 else -1
 
             
         #     minute += 1
     
-        # for r in range(row):
-        #     for c in range(col):
-        #         if grid[r][c] == 1:
-        #             return -1
-        # return minute - 1
 
         
 
