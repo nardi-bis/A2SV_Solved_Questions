@@ -7,7 +7,7 @@ class Solution:
         for r in range(len(s)):
             count[s[r]] = count.get(s[r], 0) + 1
             while count[s[r]] > 2:
-                count[s[l]] -= 1
+                count[s[l]] -= 1 # they should interchange place because ewe have to decrese before adding
                 l += 1
             ans = max(ans, r - l + 1)
         return ans
