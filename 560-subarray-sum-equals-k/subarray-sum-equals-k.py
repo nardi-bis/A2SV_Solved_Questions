@@ -4,17 +4,9 @@ class Solution:
         count[0] = 1
         runsum = 0
         ans = 0
-        
         for num in nums:
             runsum += num
-
-            ans += count[runsum-k]
-# if multiple starting point for the subarray exists, then there will that much subarray
+            ans += count[runsum - k]
 
             count[runsum] += 1
-            # if runsum in count:
-            #     count[runsum] += 1
-            # else:
-            #     count[runsum] = 1
         return ans
-
